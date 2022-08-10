@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Délis Pizzaria - Sabores</title>
+</h:head>
+<h:body>
+	<f:include src="/pages/menu.xhtml" />
+	<h:form id="main">
+		<div>
+			<h2 style="
+			 font-family: 'Montserrat', sans-serif;
+			 font-size: 1.8em; 
+			 margin: 15px; 
+			 text-align: center;"
+			>Tabela Sabores</h2>
+		</div>
+		<div>
+			<p:dataTable id="table" var="sabor" value="#{SaborMB.list_sabor}"
+				selectionMode="single" rowKey="#{sabor.id}">
+				<p:column headerText="ID">
+					<h:outputText value="#{sabor.id}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Nome Sabor">
+					<h:outputText value="#{sabor.sabor}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Descricao">
+					<h:outputText value="#{sabor.descricao}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Remover">
+					<p:commandButton value="Remover" id="btn-remover" action="#{SaborMB.removerSabor(sabor.id)}" update="table"></p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+	</h:form>
+</h:body>
+</html>

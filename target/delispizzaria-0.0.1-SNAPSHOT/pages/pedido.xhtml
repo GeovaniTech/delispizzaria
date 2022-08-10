@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Délis Pizzaria - Pedido</title>
+	<link href="../styles/pedido.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<ui:include src="/pages/menu.xhtml" />
+
+	<h:form id="main">
+		<div id="pizzas">
+			<div class="card">
+				<h:graphicImage
+					url="https://www.seekpng.com/png/full/7-70471_fatia-pizza-png-pizza-massa-fina-png.png"
+					class="img-pizza"></h:graphicImage>
+				<div id="infos">
+					<h2>Monte sua própria pizza</h2>
+					<p>Igredientes, tamanho...</p>
+					<p:button href="montar-pizza.xhtml" styleClass="btn-montar" value="Montar"></p:button>
+				</div>
+			</div>
+
+			<p:repeat var="pizza" value="#{PizzaProntaMB.pizzas}">
+				<div class="card">
+					<h:graphicImage
+						url="https://www.seekpng.com/png/full/7-70471_fatia-pizza-png-pizza-massa-fina-png.png"
+						class="img-pizza"></h:graphicImage>
+					<div id="infos">
+						<h2><h:outputText value="#{pizza.sabor.sabor}(#{pizza.tamanho}cm)" /></h2>
+						<p><h:outputText value="R$ #{pizza.preco}" /></p>
+						<p:commandButton value="Comprar" action="#{PizzaProntaMB.addIdPizzapedido(pizza.id)}" styleClass="btn-comprar"></p:commandButton>
+					</div>
+				</div>
+			</p:repeat>
+		</div>
+	</h:form>
+
+	<h:form id="footer">
+		<p>Copyright &copy; Délis Pizzaria, 2022</p>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Montserrat:wght@200&family=Quicksand:wght@300&display=swap');
+
+:root {
+    --primary-color: #e58634;
+    --second-color: #91582c;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.ui-menubar {
+	text-align: left;
+}
+
+#title-pizzaria {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    padding: 10px;
+    padding-left: 25px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Grape Nuts', cursive;
+    color: white;
+    font-size: 2.5em;
+}
+
+#footer {
+    bottom: 0;
+    background-color: var(--primary-color);
+    color: #FFF;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+#btn-pedido {
+    background-color: var(--second-color)
+}
+
+#btn-pedido:hover {
+    background-color: #3e6d38;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Délis Pizzaria - Clientes</title>
+		<link href="resources/css/header_menu.css" rel="stylesheet"
+		type="text/css" />
+	<link href="../styles/novo-cliente.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+<h:body>
+	<ui:include src="/pages/menu.xhtml" />
+
+	<h:form id="main">
+		<div id="inicio">
+			<div id="cadastro">
+				<div id="header-cadastro" style="margin-bottom: 8px;">
+					<h2>Cadastrar Sabores</h2>
+				</div>
+				<p:growl id="growl" showDetail="true" />
+				<p:inputText placeholder="Nome Sabor" value="#{SaborMB.sabor}" style="margin-bottom: 8px;"></p:inputText>
+				<p:inputText placeholder="Descrição" value="#{SaborMB.descricao}" style="margin-bottom: 8px;"></p:inputText>
+				<p:commandButton value="Cadastrar" update="table, growl, main"
+					action="#{SaborMB.addSabor}"></p:commandButton>
+			</div>
+
+			<div>
+				<h:graphicImage
+					url="https://i.pinimg.com/originals/45/eb/98/45eb98c8637d591a1bde451eb1bce941.png"
+					class="imagem"></h:graphicImage>
+			</div>
+		</div>
+
+		<div>
+			<p:dataTable id="table" var="sabor" value="#{SaborMB.list_sabor}"
+				selectionMode="single" rowKey="#{sabor.id}">
+				<p:column headerText="ID">
+					<h:outputText value="#{sabor.id}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Nome Sabor">
+					<h:outputText value="#{sabor.sabor}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Descricao">
+					<h:outputText value="#{sabor.descricao}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Remover">
+					<p:commandButton value="Remover" id="btn-remover" action="#{SaborMB.removerSabor(sabor.id)}" update="table"></p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+	</h:form>
+</h:body>
+</html>

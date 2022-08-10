@@ -1,0 +1,11 @@
+bean\PizzaProntaMB.class
+model\Pizza.class
+bean\PedidoMB.class
+model\Cliente.class
+model\Pedido.class
+bean\ClienteMB.class
+controller\Menssagens.class
+servlets\FiltroCarrinho.class
+bean\SaborMB.class
+controller\Connection.class
+model\Sabor.class

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Délis Pizzaria</title>
+</h:head>
+<h:body>
+	<ui:include src="/pages/menu.xhtml" />
+
+	<p:commandButton value="Cancelar" icon="pi pi-times" styleClass="ui-button-danger"
+		style="margin: 10px;" action="#{PizzaProntaMB.cancelar()}"></p:commandButton>
+	<p:dataTable var="cliente" value="#{ClienteMB.clientes}" selectionMode="single" rowKey="#{cliente.id}">
+		<p:column headerText="Id">
+			<h:outputText value="#{cliente.id}" />
+		</p:column>
+
+		<p:column headerText="Nome">
+			<h:outputText value="#{cliente.nome}" />
+		</p:column>
+
+		<p:column headerText="Email">
+			<h:outputText value="#{cliente.email}" />
+		</p:column>
+
+		<p:column headerText="Selecionar">
+			<p:commandButton value="Selecionar" action="#{PizzaProntaMB.addCliente(cliente)}"/>
+		</p:column>
+	</p:dataTable>
+
+	<div id="footer">
+		<p>Copyright &copy; Délis Pizzaria, 2022</p>
+	</div>
+
+</h:body>
+</html>

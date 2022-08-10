@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Carrinho</title>
+	<link rel="stylesheet" href="../styles/carrinho.css" type="text/css" />
+</h:head>
+<h:body>
+	<ui:include src="/pages/menu.xhtml"></ui:include>
+
+	<p:growl id="growl" showDetail="true" />
+
+	<h:panelGroup rendered="#{PedidoMB.carrinho_empty}">
+		<div id="carrinho-empty">
+			<h:graphicImage value="/images/carrinho.png" class="img" />
+			<h2 id="txt-carrinho">Carrinho Vazio</h2>
+		</div>
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{PedidoMB.carrinho_not_empty}">
+		<div id="header-clientes">
+			<h2>Confirme os itens do pedido</h2>
+		</div>
+
+		<div class="infos-pedido">
+			<div id="card-total">
+				<h2>Total</h2>
+				<h:outputText value="R$ #{PedidoMB.valor_total}" />
+			</div>
+			<div id="card-cliente">
+				<h2>Cliente</h2>
+				<h:outputText value="#{PedidoMB.cliente.nome}" />
+			</div>
+		</div>
+
+		<div id="main-card">
+			<p:repeat var="pizza" value="#{PedidoMB.pizzas}">
+				<div id="card">
+					<div id="img-div">
+						<h:graphicImage url="/images/pizza-conf.png" class="img-conf" />
+					</div>
+
+					<h2>Pizza</h2>
+
+					<div id="card-footer">
+						<div id="infos-pizza">
+							<h:outputText value="Sabor #{pizza.sabor.sabor}" />
+							<div>
+								<h:outputText value="Tamanho #{pizza.tamanho}cm" />
+							</div>
+						</div>
+						<div id="botoes">
+							<p:commandButton icon="pi pi-plus"
+								styleClass="rounded-button ui-button-success"
+								action="#{PedidoMB.novaPizza()}" />
+							<p:commandButton icon="pi pi-times"
+								styleClass="rounded-button ui-button-danger"
+								action="#{PedidoMB.removerPizza(pizza.id)}"
+								update="growl"></p:commandButton>
+						</div>
+					</div>
+				</div>
+			</p:repeat>
+		</div>
+
+		<div id="finalizar">
+			<p:commandButton icon="pi pi-check" value="Finalizar"
+				styleClass="ui-button-success" action="#{PedidoMB.addPedido}"></p:commandButton>
+		</div>
+	</h:panelGroup>
+
+	<div id="footer">
+		<p>Copyright &copy; Délis Pizzaria, 2022</p>
+	</div>
+</h:body>
+</html>

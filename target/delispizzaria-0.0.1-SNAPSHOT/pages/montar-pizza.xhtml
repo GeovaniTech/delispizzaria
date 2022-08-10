@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Montar Pizza</title>
+	<link rel="stylesheet" href="../styles/carrinho.css"
+		type="text/css" />
+	<link rel="stylesheet" href="../styles/montar-pizza.css" type="text/css"/>
+</h:head>
+<h:body>
+	<p:growl id="growl" showDetail="true"></p:growl>
+
+	<ui:include src="/pages/menu.xhtml" />
+	<div id="main">
+		<div>
+			<p:steps activeIndex="#{PedidoMB.stepIndex}" id="steps">
+				<p:menuitem value="Tamanho"></p:menuitem>
+				<p:menuitem value="Sabor"></p:menuitem>
+				<p:menuitem value="Cliente"></p:menuitem>
+				<p:menuitem value="Confirmar"></p:menuitem>
+			</p:steps>
+		</div>
+		
+		<h:form class="main-card-tamanho"
+			rendered="#{PedidoMB.tamanho_rendered}">
+			<div class="card-opcao-tamanho">
+				<p:graphicImage url="../images/pizza-tam.png" class="img-pequena"></p:graphicImage>
+				<h2>Pequena (25cm)</h2>
+				<p>R$ 39,99</p>
+				<p:commandButton value="Selecionar"
+					action="#{PedidoMB.addTamanho(25)}" update="steps">
+				</p:commandButton>
+			</div>
+
+			<div class="card-opcao-tamanho">
+				<p:graphicImage url="../images/pizza-tam.png" class="img-media"></p:graphicImage>
+				<h2>Média (35cm)</h2>
+				<p>R$ 49,99</p>
+				<p:commandButton value="Selecionar"
+					action="#{PedidoMB.addTamanho(35)}" update="steps"></p:commandButton>
+			</div>
+
+			<div class="card-opcao-tamanho">
+				<p:graphicImage url="../images/pizza-tam.png" class="img-suprema"></p:graphicImage>
+				<h2>Suprema (75cm)</h2>
+				<p>R$ 99,99</p>
+				<p:commandButton value="Selecionar"
+					action="#{PedidoMB.addTamanho(75)}" update="steps"></p:commandButton>
+			</div>
+		</h:form>
+
+		<div>
+			<h:panelGroup id="panel-sabor" rendered="#{PedidoMB.sabor_rendered}">
+				<p:commandButton value="Voltar" icon="pi pi-arrow-left"
+					action="#{PedidoMB.voltarStep}" style="margin: 10px;" update="steps"></p:commandButton>
+					<p:button value="Carrinho" icon="pi pi-shopping-cart" styleClass="ui-button-success" href="/pizzaria/pages/carrinho.xhtml"/>
+				<p:dataTable var="sabor" value="#{SaborMB.list_sabor}">
+					<p:column headerText="Sabor">
+						<h:outputText value="#{sabor.sabor}" />
+					</p:column>
+
+					<p:column headerText="Descrição">
+						<h:outputText value="#{sabor.descricao}" />
+					</p:column>
+
+					<p:column headerText="Selecionar">
+						<p:commandButton value="Selecionar"
+							action="#{PedidoMB.addSabor(sabor)}" id="btn-selecionar"
+							update="steps"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:panelGroup>
+		</div>
+
+		<div>
+			<h:panelGroup id="panel-cliente"
+				rendered="#{PedidoMB.cliente_rendered}">
+
+				<p:commandButton value="voltar" icon="pi pi-arrow-left"
+					action="#{PedidoMB.voltarStep}" style="margin: 10px;" update="steps"></p:commandButton>
+				<p:button value="Carrinho" icon="pi pi-shopping-cart" styleClass="ui-button-success" href="/pizzaria/pages/carrinho.xhtml"/>
+				<p:dataTable var="cliente" value="#{ClienteMB.clientes}">
+					<p:column headerText="Id">
+						<h:outputText value="#{cliente.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{cliente.nome}" />
+					</p:column>
+
+					<p:column headerText="Email">
+						<h:outputText value="#{cliente.email}" />
+					</p:column>
+
+					<p:column headerText="Selecionar">
+						<p:commandButton value="Selecionar"
+							action="#{PedidoMB.addCliente(cliente)}" update="steps, growl"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:panelGroup>
+		</div>
+
+		<div>
+			<h:panelGroup rendered="#{PedidoMB.confirmacao_rendered}"
+				id="panel-confirmacao">
+				<div id="header-clientes">
+					<h2>Confirme os itens do pedido</h2>
+				</div>
+
+				<div class="infos-pedido">
+					<div id="card-total">
+						<h2>Total</h2>
+						<h:outputText value="R$ #{PedidoMB.valor_total}" />
+					</div>
+					<div id="card-cliente">
+						<h2>Cliente</h2>
+						<h:outputText value="#{PedidoMB.cliente.nome}" />
+					</div>
+				</div>
+
+				<div id="main-card">
+					<p:repeat var="pizza" value="#{PedidoMB.pizzas}">
+						<div id="card">
+							<div id="img-div">
+								<h:graphicImage url="/images/pizza-conf.png" class="img-conf" />
+							</div>
+
+							<h2>Pizza</h2>
+
+							<div id="card-footer">
+								<div id="infos-pizza">
+									<h:outputText value="Sabor #{pizza.sabor.sabor}" />
+									<div>
+										<h:outputText value="Tamanho #{pizza.tamanho}cm" />
+									</div>
+								</div>
+								<div id="botoes">
+									<p:commandButton icon="pi pi-plus" 
+										styleClass="rounded-button ui-button-success" action="#{PedidoMB.novaPizza()}"/>
+									<p:commandButton icon="pi pi-times"
+										styleClass="rounded-button ui-button-danger"
+										action="#{PedidoMB.removerPizza(pizza.id)}"
+										update="growl"></p:commandButton>
+								</div>
+							</div>
+						</div>
+					</p:repeat>
+				</div>
+
+				<div id="finalizar">
+					<p:commandButton icon="pi pi-check" value="Finalizar"
+						styleClass="ui-button-success" action="#{PedidoMB.addPedido()}"></p:commandButton>
+				</div>
+
+				<div id="footer"> 
+					<p>Copyright &copy; Délis Pizzaria, 2022</p>
+				</div>
+			</h:panelGroup>
+		</div>
+	</div>
+</h:body>
+</html>

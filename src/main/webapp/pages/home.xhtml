@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Délis Pizzaria</title>
+<link href="../styles/home.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/header_menu.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<ui:include src="/pages/menu.xhtml" />
+	
+	<h:form id="main">
+        <div id="inicio">
+            <div id="conteudo">
+                <h2 id="délis-pizza">Délis Pizzaria</h2>
+                <p id="delis-texto">As melhores pizzas do Brasil estão aqui! Desde de 1949 produzindo pizzas de qualidade para toda região.</p>
+                <a href="#" id="contato"><i class="fi fi-brands-whatsapp"></i> Entrar em contato</a>
+            </div>
+    
+            <div id="img">
+           		<h:graphicImage url="https://static.wixstatic.com/media/d73abe_84c827181ed44d4b96773d95c03f4f98~mv2.png/v1/fill/w_560,h_346,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/d73abe_84c827181ed44d4b96773d95c03f4f98~mv2.png" class="img_pizza"></h:graphicImage>
+            </div>
+        </div>
+        
+        <h2 id="texto-pizzaiolos">Contamos com os pizzaiolos mais renomados do Brasil</h2>
+        
+        <div id="pizzaiolos">
+            <div class="card">
+                <h:graphicImage url="/images/geovani.jpg" class="img_pizzaiolos"></h:graphicImage>
+                <div>
+                    <p id="nome">Geovani Debastiani</p>
+                    <p id="apresentacao">
+                        Anos de Vivência e fluência em Florença na Itália.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h:graphicImage url="/images/geovani.jpg" class="img_pizzaiolos"></h:graphicImage>
+                <div>
+                    <p id="nome">Geovani Debastiani</p>
+                    <p id="apresentacao">Profissional com mais de 7 anos de experiência em criação e formulação de sabores.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h:graphicImage url="/images/geovani.jpg" class="img_pizzaiolos"></h:graphicImage>
+                <div>
+                    <p id="nome">Geovani Debastiani</p>
+                    <p id="apresentacao">
+                        Anos de Vivência e fluência em Florença na Itália.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+	</h:form>
+	
+	<h:form id="footer">
+		<p>Copyright &copy; Délis Pizzaria, 2022</p>
+	</h:form>
+</h:body>
+</html>

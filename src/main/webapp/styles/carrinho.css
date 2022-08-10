@@ -1,0 +1,122 @@
+#header-clientes h2 {
+	color: gray;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2em;
+	margin-top: 35px;
+	margin-bottom: 35px;
+	margin-left: 20px;
+	text-align: left;
+}
+
+#footer {
+	margin-top: 15px;
+}
+
+#main-card {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.2em;
+}
+
+#card {
+	width: 350px;
+	-moz-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	margin: 25px;
+}
+
+#card:hover {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+#card-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 20px;
+}
+
+#infos-pizza {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.img-conf {
+	width: 250px;
+	height: 250px;
+}
+
+#img-div {
+	text-align: center;
+}
+
+#botoes {
+	margin-left: 8px;
+}
+
+#botoes button {
+	margin-left: 3px;
+}
+
+#finalizar {
+	display: flex;
+	justify-content: center;
+}
+
+#finalizar button {
+	width: 450px;
+	height: 50px;
+	font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.infos-pedido {
+	font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	
+}
+
+#card-cliente {
+	background-color: #0fad9f;
+	width: 275px;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+#card-total {
+	background-color: #f98d06;
+	width: 275px;
+	padding: 15px;
+	border-radius: 10px;
+	margin-right: 20px;
+}
+
+#carrinho-empty {
+	font-size: 2.5em;
+	font-family: 'Montserrat', sans-serif;
+	align-items: center;
+	justify-content: center;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.img {
+	width: 100%;
+	
+	max-width: 800px;
+	max-height: 800px
+}

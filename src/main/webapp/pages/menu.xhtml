@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Menu</title>
+	<link rel="stylesheet" href="../styles/header_menu.css" type="text/css" />
+	<link rel='stylesheet'
+		href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css' />
+	<link rel='stylesheet'
+		href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css' />
+</h:head>
+<h:body>
+	<h:form id="header">
+		<div id="title-pizzaria">
+			<h1>Délis Pizzaria</h1>
+		</div>
+
+		<div id="menu">
+			<p:menubar class="ui-menubar">
+				<p:menuitem outcome="home.xhtml">
+					<i class="fi fi-rr-home"></i> Home</p:menuitem>
+
+				<p:submenu label="Pedidos" icon="pi pi-shopping-cart">
+					<p:menuitem outcome="pedido.xhtml" icon="pi pi-plus"> Novo Pedido</p:menuitem>
+					<p:menuitem outcome="carrinho.xhmtl" icon="pi pi-wallet"> Carrinho</p:menuitem>
+					<p:menuitem outcome="listar-pedidos.xhtml" icon="pi pi-table"> Listar Pedidos</p:menuitem>
+				</p:submenu>
+
+				<p:submenu label="Clientes" icon="pi pi-user">
+					<p:menuitem icon="pi pi-user-plus" outcome="novo-cliente.xhtml"> Novo Cliente</p:menuitem>
+					<p:menuitem icon="pi pi-table" outcome="listar-cliente.xhtml"> Listar</p:menuitem>
+				</p:submenu>
+
+				<p:submenu label="Sabores" icon="pi pi-ticket">
+					<p:menuitem icon="pi pi-plus" outcome="novo-sabor.xhtml"> Novo Sabor</p:menuitem>
+					<p:menuitem icon="pi pi-table" outcome="listar-sabores.xhtml"> Listar</p:menuitem>
+				</p:submenu>
+
+				<p:submenu label="Pizzas Prontas" icon="pi pi-spinner">
+					<p:menuitem icon="pi pi-plus" outcome="nova-pizza.xhtml"> Nova Pizza</p:menuitem>
+					<p:menuitem icon="pi pi-table" outcome="listar-pizzas-prontas.xhtml"> Listar Pizzas</p:menuitem>
+				</p:submenu>
+			</p:menubar>
+		</div>
+	</h:form>
+</h:body>
+</html>
