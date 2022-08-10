@@ -8,6 +8,7 @@
  + Primefaces
  + JDBC
  + Postgresql
+ + Java
  
  ## Home
  ![home delis](https://user-images.githubusercontent.com/84943777/184039674-6f4f31c8-c1e1-4773-922d-87a0ae243e88.PNG)
