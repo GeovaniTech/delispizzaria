@@ -13,7 +13,7 @@ public class Connection {
 	public Connection() {
 		url = "jdbc:postgresql://localhost:5432/delispizzaria";
 		user = "postgres";
-		password = "Geovani5280";
+		password = "SUA SENHA";
 		
 		try {
 			Class.forName("org.postgresql.Driver");
